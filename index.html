@@ -7,9 +7,485 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div><H1>hello world</H1></div> 
-   <div>?</div>
-   Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eveniet rerum sapiente vitae dicta perspiciatis sint error facilis laborum quisquam voluptatem, rem sequi eum debitis quod placeat sed unde eos.
-   <div>Hello world</div>
+     <!-- Шапка -->
+    <header class="hero-section" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Добро пожаловать в Калининград!</h1>
+            <p class="hero-subtitle">Откройте тайны самого западного региона России</p>
+        </div>
+        <a href="#about" class="scroll-down">↓</a>
+    </header>
+
+    <!-- Раздел "О Калининградской области" -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Почему стоит посетить?</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Калининградская область — уникальный регион России, расположенный на побережье Балтийского моря и не имеющий сухопутной границы с основной территорией страны. Этот анклав обладает богатой историей, уходящей корнями в эпоху Тевтонского ордена, когда здесь располагалось государство Пруссия со столицей Кёнигсберг.</p>
+                    <p>Сегодня регион сочетает в себе европейское наследие и российскую культуру. Здесь вы найдете средневековые замки, готические соборы, старинные фортификационные сооружения и современные музеи. Природа области также поражает разнообразием: от песчаных дюн Куршской косы до хвойных лесов и янтарных пляжей.</p>
+                    <p>Калининградская область — это единственное место в России, где добывают янтарь, составляющий 90% мировых запасов. Кроме того, регион славится своей уникальной кухней, в которой сочетаются немецкие, польские и русские традиции.</p>
+                </div>
+                <aside class="facts-card fade-in">
+                    <h3>Ключевые факты</h3>
+                    <div class="fact-item">
+                        <div class="fact-title">Площадь</div>
+                        <div>15 100 км²</div>
+                    </div>
+                    <div class="fact-item">
+                        <div class="fact-title">Население</div>
+                        <div>≈ 1 000 000 человек</div>
+                    </div>
+                    <div class="fact-item">
+                        <div class="fact-title">Климат</div>
+                        <div>Умеренный морской, с мягкой зимой и прохладным летом</div>
+                    </div>
+                    <div class="fact-item">
+                        <div class="fact-title">Часовой пояс</div>
+                        <div>МСК-1 (UTC+2)</div>
+                    </div>
+                    <div class="fact-item">
+                        <div class="fact-title">Основан</div>
+                        <div>1255 год (как Кёнигсберг)</div>
+                    </div>
+                </aside>
+            </div><div class="site-description fade-in">
+                <p>Этот ресурс поможет вам спланировать путешествие: от маршрутов до сувениров. Мы собрали всю необходимую информацию о достопримечательностях, советы туристам и контакты для связи.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Интерактивная карта -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <h2 class="section-title fade-in">Достопримечательности</h2>
+            <div class="mobile-map-toggle">
+                <button class="btn" id="toggleMapBtn">Показать карту</button>
+            </div>
+            <div class="map-container">
+                <div class="map-wrapper" id="mapWrapper">
+                    <div class="map-image">
+                        <!-- Маркеры на карте -->
+                        <div class="map-marker marker-1" data-target="kosa">
+                            <i>📍</i>
+                        </div>
+                        <div class="map-marker marker-2" data-target="village">
+                            <i>📍</i>
+                        </div>
+                        <div class="map-marker marker-3" data-target="cathedral">
+                            <i>📍</i>
+                        </div>
+                        <div class="map-marker marker-4" data-target="castle">
+                            <i>📍</i>
+                        </div>
+                        <div class="map-marker marker-5" data-target="museum">
+                            <i>📍</i>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-overlay" id="modalOverlay"></div>
+                    
+                    <!-- Модальное окно -->
+                    <div class="map-modal" id="mapModal">
+                        <div class="modal-header">
+                            <div>
+                                <h3 id="modalTitle">Название места</h3>
+                            </div>
+                            <button class="close-modal" id="closeModal">&times;</button>
+                        </div>
+                        <div class="modal-content">
+                            <p id="modalDescription">Описание достопримечательности</p>
+                            <div class="address">
+                                <i>📍</i>
+                                <span id="modalAddress">Адрес достопримечательности</span>
+                            </div>
+                        </div>
+                        <div class="modal-actions">
+                            <button class="btn" id="addToRouteBtn">Добавить в маршрут</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <aside class="attractions-list">
+                    <h3>Все достопримечательности</h3>
+                    <div class="attraction-item active" data-target="kosa">
+                        <h4>Куршская коса</h4>
+                        <p>Уникальный природный заповедник с песчаными дюнами</p>
+                    </div>
+                    <div class="attraction-item" data-target="village">
+                        <h4>Рыбная деревня</h4>
+                        <p>Этнографический и торгово-ремесленный комплекс</p>
+                    </div>
+                    <div class="attraction-item" data-target="cathedral">
+                        <h4>Кафедральный собор</h4>
+                        <p>Готический собор на острове Канта с органным залом</p>
+                    </div>
+                    <div class="attraction-item" data-target="castle">
+                        <h4>Замок Нессельбек</h4>
+                        <p>Воссозданный средневековый замок с музеем пыток</p>
+                    </div>
+                    <div class="attraction-item" data-target="museum">
+                        <h4>Музей мирового океана</h4>
+                        <p>Единственный в России комплексный морской музей</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+    <!-- Раздел "Советы туристам" -->
+    <section class="tips-section" id="tips">
+        <div class="container">
+            <h2 class="section-title fade-in">Как подготовиться к поездке</h2>
+            <div class="tips-content">
+                <div class="tips-list">
+                    <div class="tip-item fade-in">
+                        <div class="tip-number">1</div>
+                        <div class="tip-content">
+                            <h4><span class="tip-icon">👟</span> Возьмите удобную обувь</h4>
+                            <p>Калининград славится своей брусчаткой и пешеходными зонами. Удобная обувь необходима для длительных прогулок по историческому центру и набережным.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item fade-in">
+                        <div class="tip-number">2</div>
+                        <div class="tip-content">
+                            <h4><span class="tip-icon">🍽️</span> Попробуйте кёнигсбергские клопсы</h4>
+                            <p>Обязательно попробуйте местные деликатесы: кёнигсбергские клопсы (мясные тефтели в белом соусе), марципан и балтийскую рыбу.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item fade-in">
+                        <div class="tip-number">3</div>
+                        <div class="tip-content">
+                            <h4><span class="tip-icon">🌧️</span> Захватите зонт и ветровку</h4>
+                            <p>Погода в Калининграде переменчива из-за близости моря. Даже летом может быть прохладно и дождливо, поэтому легкая ветровка и зонт будут кстати.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item fade-in">
+                        <div class="tip-number">4</div>
+                        <div class="tip-content">
+                            <h4><span class="tip-icon">🚗</span> Арендуйте автомобиль</h4>
+                            <p>Чтобы увидеть все достопримечательности области, лучше арендовать автомобиль. Это позволит посетить Куршскую косу, Светлогорск, Янтарный и другие интересные места.</p>
+                        </div>
+                    </div>
+                    <div class="tip-item fade-in">
+                        <div class="tip-number">5</div>
+                        <div class="tip-content">
+                            <h4><span class="tip-icon">🕍</span> Изучите историю региона</h4>
+                            <p>Перед поездкой почитайте о богатой истории Калининграда (бывшего Кёнигсберга). Это сделает ваше путешествие более осознанным и интересным.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="fade-in" style="text-align: center; margin-bottom: 2rem;">Сезонные советы</h3>
+                <div class="seasonal-tips">
+                    <div class="season-card fade-in">
+                        <div class="season-icon">☀️</div>
+                        <h4>Лето</h4>
+                        <p>Идеальное время для посещения пляжей и Куршской косы. Температура +20...+25°C.</p>
+                    </div>
+                    <div class="season-card fade-in">
+                        <div class="season-icon">🍂</div>
+                        <h4>Осень</h4>
+                        <p>Живописные парки и леса. Сентябрь еще достаточно теплый для прогулок.</p>
+                    </div>
+                    <div class="season-card fade-in">
+                        <div class="season-icon">❄️</div>
+                        <h4>Зима</h4>
+                        <p>Рождественские ярмарки и мягкая зима (+1...-5°C). Реже туристы, ниже цены.</p>
+                    </div>
+                    <div class="season-card fade-in"><div class="season-icon">🌷</div>
+                        <h4>Весна</h4>
+                        <p>Цветение садов и парков. Апрель-май — хорошее время для экскурсий.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact-section" id="contacts">
+        <div class="container">
+            <h2 class="section-title fade-in">Свяжитесь с нами</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@kaliningrad-travel.ru">info@kaliningrad-travel.ru</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>Телефон</h4>
+                            <p><a href="tel:+78001234567">8 (800) 123-45-67</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Адрес офиса</h4>
+                            <p><a href="https://yandex.ru/maps/org/kaliningrad/1016851996/" target="_blank">г. Калининград, ул. Ленина, 10</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>Часы работы</h4>
+                            <p>Пн-Пт: 9:00-18:00<br>Сб-Вс: 10:00-16:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://vk.com/kaliningrad" target="_blank" class="social-icon">VK</a>
+                        <a href="https://t.me/kaliningrad_travel" target="_blank" class="social-icon">TG</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3>Остались вопросы?</h3>
+                    <p>Заполните форму, и мы свяжемся с вами в течение 24 часов</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" class="form-control" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Ваш вопрос или комментарий" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок с мерчем -->
+    <section class="merch-section" id="merch">
+        <div class="container">
+            <h2 class="section-title fade-in">Сувениры из Калининграда</h2>
+            <div class="merch-grid"><div class="merch-card fade-in">
+                    <div class="merch-image" style="background-image: url('https://images.unsplash.com/photo-1590334284665-6fc22c5c4d28?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="merch-info">
+                        <h4>Набор янтарных украшений</h4>
+                        <p>Комплект из сережек и кулона из натурального балтийского янтаря</p>
+                        <div class="merch-price">4 500 ₽</div>
+                    </div>
+                </div>
+                <div class="merch-card fade-in">
+                    <div class="merch-image" style="background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="merch-info">
+                        <h4>Футболка с символикой</h4>
+                        <p>Хлопковая футболка с принтом "Калининград" и силуэтом Кафедрального собора</p>
+                        <div class="merch-price">1 200 ₽</div>
+                    </div>
+                </div>
+                <div class="merch-card fade-in">
+                    <div class="merch-image" style="background-image: url('https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="merch-info">
+                        <h4>Книга о Кёнигсберге</h4>
+                        <p>Иллюстрированное издание об истории и архитектуре старого Кёнигсберга</p>
+                        <div class="merch-price">950 ₽</div>
+                    </div>
+                </div>
+                <div class="merch-card fade-in">
+                    <div class="merch-image" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="merch-info">
+                        <h4>Набор местных сладостей</h4>
+                        <p>Марципан, шоколад с янтарем и другие традиционные сладости региона</p>
+                        <div class="merch-price">1 800 ₽</div>
+                    </div>
+                </div>
+            </div>
+            <div class="merch-actions">
+                <a href="https://example-shop.ru/kaliningrad" target="_blank" class="btn">Перейти в магазин</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Главная</a>
+                <a href="#about">О регионе</a>
+                <a href="#map">Достопримечательности</a>
+                <a href="#tips">Советы туристам</a>
+                <a href="#contacts">Контакты</a>
+                <a href="#merch">Сувениры</a>
+            </div>
+            <p class="copyright">© 2023 Туристический портал Калининградской области. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Данные для достопримечательностей
+        const attractions = {
+            kosa: {
+                title: "Куршская коса",
+                description: "Уникальный природный заповедник, включенный в список Всемирного наследия ЮНЕСКО. Протяженность косы — 98 км, здесь находятся самые высокие в Европе песчаные дюны. На территории заповедника обитают лоси, кабаны, косули и более 300 видов птиц.",
+                address: "Калининградская область, Зеленоградский район"
+            },
+            village: {
+                title: "Рыбная деревня",
+                description: "Этнографический и торгово-ремесленный комплекс в стиле старого Кёнигсберга. Здесь можно посетить смотровую площадку на маяке, музеи, сувенирные лавки и рестораны с местной кухней. Отличное место для фотосессий.",address: "г. Калининград, ул. Октябрьская, 2"
+            },
+            cathedral: {
+                title: "Кафедральный собор",
+                description: "Готический собор XIV века на острове Канта. В соборе расположен органный комплекс — один из крупнейших в России. Рядом находится могила философа Иммануила Канта. Собор является символом Калининграда.",
+                address: "г. Калининград, ул. Канта, 1"
+            },
+            castle: {
+                title: "Замок Нессельбек",
+                description: "Воссозданный средневековый замок с музеем пыток, ресторанами и гостиницей. Здесь проводятся рыцарские турниры, мастер-классы по старинным ремеслам и дегустации местных напитков. Замок расположен в живописном месте у реки.",
+                address: "Калининградская область, пос. Орловка"
+            },
+            museum: {
+                title: "Музей мирового океана",
+                description: "Единственный в России комплексный морской музей. В экспозиции — настоящие суда: научно-исследовательское судно «Витязь», подводная лодка Б-413, рыболовный траулер. Также есть аквариумы с морскими обитателями.",
+                address: "г. Калининград, набережная Петра Великого, 1"
+            }
+        };
+
+        // DOM элементы
+        const markers = document.querySelectorAll('.map-marker');
+        const attractionItems = document.querySelectorAll('.attraction-item');
+        const modal = document.getElementById('mapModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalAddress = document.getElementById('modalAddress');
+        const addToRouteBtn = document.getElementById('addToRouteBtn');
+        const toggleMapBtn = document.getElementById('toggleMapBtn');
+        const mapWrapper = document.getElementById('mapWrapper');
+        const contactForm = document.getElementById('contactForm');
+        const scrollDownBtn = document.querySelector('.scroll-down');
+
+        // Плавный скролл при клике на стрелку вниз
+        scrollDownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#about').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Плавный скролл для всех внутренних ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Открытие модального окна при клике на маркер
+        markers.forEach(marker => {
+            marker.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                showAttractionInfo(target);
+                
+                // Активируем соответствующий элемент в списке
+                attractionItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('data-target') === target) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Открытие модального окна при клике на элемент списка
+        attractionItems.forEach(item => {item.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                showAttractionInfo(target);
+                
+                // Активируем текущий элемент и деактивируем остальные
+                attractionItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Функция показа информации о достопримечательности
+        function showAttractionInfo(target) {
+            const attraction = attractions[target];
+            
+            modalTitle.textContent = attraction.title;
+            modalDescription.textContent = attraction.description;
+            modalAddress.textContent = attraction.address;
+            
+            modal.classList.add('active');
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            modal.classList.remove('active');
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', closeModal);
+
+        // Кнопка "Добавить в маршрут" (временно неактивна)
+        addToRouteBtn.addEventListener('click', function() {
+            alert('Функция "Добавить в маршрут" временно недоступна. Скоро мы ее добавим!');
+        });
+
+        // Переключение видимости карты на мобильных устройствах
+        toggleMapBtn.addEventListener('click', function() {
+            mapWrapper.classList.toggle('active');
+            this.textContent = mapWrapper.classList.contains('active') ? 'Скрыть карту' : 'Показать карту';
+        });
+
+        // Обработка формы обратной связи
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // В реальном приложении здесь будет отправка данных на сервер
+            alert(Спасибо,)
+            contactForm.reset();
+        });
+
+        // Анимация появления элементов при скролле
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Проверяем при загрузке и при скролле
+        window.addEventListener('load', checkScroll);
+        window.addEventListener('scroll', checkScroll);
+        
+        // Инициализация анимации при загрузке
+        checkScroll();
+    </script>
 </body>
 </html>
