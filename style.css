@@ -229,6 +229,9 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             height: 500px;
+            width: 500vw;
+            margin-left: calc(-50vw + 50%); 
+             margin-right: calc(-50vw + 50%);
         }
 
         .map-image {
