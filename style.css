@@ -100,7 +100,9 @@
         .hero-section {
             height: 100vh;
             min-height: 600px;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1593693399746-69c7ac2c6a6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background-image: url(editing_result_62ea59b632b511f18007f247a36df2ca_1.png) ;
+            background-size: cover;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
